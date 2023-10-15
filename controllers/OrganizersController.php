@@ -25,7 +25,7 @@ class OrganizersController extends Controller
 
         return $this->render('index', [
             'model' => $model,
-            'dataProvider' => $model->allOrganizers(),
+            'dataProvider' => $model->organizersDataProvider(),
         ]);
     }
 

@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var app\models\Organizer $model */
 
-$this->title = 'Изменение организатора' . $model->name;
+$this->title = 'Изменение организатора '.$model->name;
 
 ?>
 <div class="update">
