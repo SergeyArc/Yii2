@@ -54,6 +54,14 @@ $config = [
                 'sameSite' => 'None',
             ],
         ],
+        'formatter' => [
+            'dateFormat' => 'dd.MM.yyyy',
+            'datetimeFormat' => 'dd.MM.yyyy HH:mm:ss',
+            'decimalSeparator' => ',',
+            'thousandSeparator' => ' ',
+            'currencyCode' => 'RUB',
+            'defaultTimeZone' => 'UTC',
+        ],
         'queue' => [
             'class' => \yii\queue\db\Queue::class,
             'mutex' => \yii\mutex\MysqlMutex::class,
@@ -97,7 +105,9 @@ $config = [
         ],
 
     ],
-    'params' => $params,
+    'params' => [
+        'bsVersion' => '4.x',
+    ],
 ];
 
 if (YII_ENV_DEV) {

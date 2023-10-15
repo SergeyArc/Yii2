@@ -2,14 +2,30 @@
 
 namespace app\controllers;
 
+use app\models\Event;
 use yii\web\Controller;
 
 class SiteController extends Controller
 {
-    public $enableCsrfValidation = false;
+    /**
+     * {@inheritdoc}
+     */
+    public function actions()
+    {
+        return [
+            'error' => [
+                'class' => 'yii\web\ErrorAction',
+            ],
+        ];
+    }
 
     public function actionIndex()
     {
-        return $this->render('index');
+        $model = new Event();
+
+        return $this->render('index', [
+            'model' => $model,
+            'dataProvider' => $model->eventsDataProvider(),
+        ]);
     }
 }
