@@ -38,7 +38,8 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'Setting', 'url' => ['/install']],
+            ['label' => 'Мероприятия', 'url' => ['/events']],
+            ['label' => 'Организаторы', 'url' => ['/organizers']],
         ],
     ]);
     NavBar::end();
@@ -52,10 +53,6 @@ AppAsset::register($this);
 </main>
 
 <footer class="footer mt-auto py-3 text-muted">
-    <div class="container">
-        <p class="float-left"><?= date('Y') ?></p>
-        <p class="float-right"><a href="https://remark.digital">Remark</a></p>
-    </div>
 </footer>
 
 <?php $this->endBody() ?>
