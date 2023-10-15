@@ -40,10 +40,15 @@ class Organizer extends ActiveRecord
             ->viaTable('event_organizer', ['organizer_id' => 'id']);
     }
 
-    public function allEvents()
+    public function allOrganizers(): ActiveDataProvider
     {
         return new ActiveDataProvider([
             'query' => self::find(),
         ]);
+    }
+
+    public static function findOrganizer(int $id): ?Organizer
+    {
+        return self::findOne($id);
     }
 }
