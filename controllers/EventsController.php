@@ -26,16 +26,8 @@ class EventsController extends Controller
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
                 $post = \Yii::$app->request->post();
-
                 $postOrganizers = !empty($post['Event']['organizers']) ? $post['Event']['organizers'] : [];
-                foreach ($postOrganizers as $i => $organizer) {
-                    $postOrganizers[$i] = (int) $organizer;
-                }
-
-                $organizers = Organizer::findById($postOrganizers);
-                foreach ($organizers as $organizer) {
-                    $model->link('organizers', $organizer);
-                }
+                $model->linkOrganizers($postOrganizers);
 
                 return $this->redirect(['index']);
             }
@@ -60,16 +52,8 @@ class EventsController extends Controller
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
             $model->unlinkAll('organizers', true);
             $post = \Yii::$app->request->post();
-
             $postOrganizers = !empty($post['Event']['organizers']) ? $post['Event']['organizers'] : [];
-            foreach ($postOrganizers as $i => $organizer) {
-                $postOrganizers[$i] = (int) $organizer;
-            }
-
-            $organizers = Organizer::findById($postOrganizers);
-            foreach ($organizers as $organizer) {
-                $model->link('organizers', $organizer);
-            }
+            $model->linkOrganizers($postOrganizers);
 
             return $this->redirect('index');
         }

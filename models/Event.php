@@ -69,4 +69,16 @@ class Event extends ActiveRecord
     {
         return self::findOne($id);
     }
+
+    public function linkOrganizers(array $postOrganizers): void
+    {
+        foreach ($postOrganizers as $i => $organizer) {
+            $postOrganizers[$i] = (int) $organizer;
+        }
+
+        $organizers = Organizer::findById($postOrganizers);
+        foreach ($organizers as $organizer) {
+            $this->link('organizers', $organizer);
+        }
+    }
 }
